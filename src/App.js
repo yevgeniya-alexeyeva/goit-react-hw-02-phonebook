@@ -18,6 +18,7 @@ class App extends Component {
 
   saveNewContact = (e, name, number) => {
     e.preventDefault();
+
     this.state.contacts.some((item) => item.name === name)
       ? alert(`${name} is already in contacts`)
       : this.setState((prevState) => {
@@ -47,6 +48,7 @@ class App extends Component {
     const { value } = e.target;
     this.setState({ filter: value.toLowerCase().trim() });
   };
+
   filterContacts = () => {
     const { contacts, filter } = this.state;
     return isNaN(filter)
@@ -62,7 +64,7 @@ class App extends Component {
         <h2>Contacts</h2>
         <Filter onInput={this.filterHandler} />
         <ContactList
-          contactsList={this.filterContacts()}
+          contactList={this.filterContacts()}
           onDelete={this.removeContact}
         />
       </div>

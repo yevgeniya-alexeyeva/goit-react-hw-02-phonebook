@@ -1,11 +1,12 @@
 import Contact from "../Contact";
 import PropTypes from "prop-types";
+import { itemList } from "./ContactList.module.css";
 
 const ContactList = (props) => {
-  const { contactsList, onDelete } = props;
+  const { contactList, onDelete } = props;
   return (
-    <ul>
-      {contactsList.map((item) => {
+    <ul className={itemList}>
+      {contactList.map((item) => {
         return <Contact item={item} key={item.id} onDelete={onDelete} />;
       })}
     </ul>
@@ -13,7 +14,7 @@ const ContactList = (props) => {
 };
 
 ContactList.propTypes = {
-  contactsList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  contactList: PropTypes.arrayOf(PropTypes.object).isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 
